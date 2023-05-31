@@ -60,7 +60,6 @@ const patchPatients = async (req, res) => {
     if ("phoneNumber" in req.body)
       updatedPatient.phoneNumber = req.body.phoneNumber;
     if ("email" in req.body) updatedPatient.email = req.body.email;
-    if ("password" in req.body) updatedPatient.password = req.body.password;
 
     await Patients.findByIdAndUpdate(req.params.id, updatedPatient);
 

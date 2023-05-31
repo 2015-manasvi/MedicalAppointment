@@ -10,7 +10,7 @@ const validateInsertDoctorData = [
   body("password", "password is required").not().isEmpty(),
   body("password", "must have a min of 1 and a max of 50 characters").isLength({
     min: 1,
-    max: 50,
+    max: 100,
   }),
   body("name", "year is required").not().isEmpty(),
   body("name", "must have a min of 1 and a max of 50 characters").isLength({

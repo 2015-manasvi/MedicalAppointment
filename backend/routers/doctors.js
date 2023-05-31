@@ -15,7 +15,7 @@ const { validateInsertDoctorData } = require("../validators/doctors");
 router.get("/doctors", getDoctors);
 router.post("/doctors", postDoctor);
 router.put("/doctors", validateInsertDoctorData, putDoctors);
-router.delete("/doctors/:_id", deleteDoctors);
+router.delete("/doctors/:id", deleteDoctors);
 router.patch("/doctors/:id", patchDoctors);
 
 module.exports = router;

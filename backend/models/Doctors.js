@@ -34,7 +34,7 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: true,
       minLength: 1,
-      maxLength: 50,
+      maxLength: 100,
     },
     name: {
       type: String,
