@@ -2,7 +2,6 @@ import React from "react";
 import { useContext, useState } from "react";
 import PatientDashboard from "./PatientDashboard";
 import UserContext from "../context/user";
-import PageContext from "../context/page";
 import DoctorDashboard from "./DoctorDashboard";
 
 const HomePage = () => {
