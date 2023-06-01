@@ -22,7 +22,7 @@ const LoginPage = () => {
   const handleLogin = async () => {
     const { ok, data } = await fetchData("/auth/login", "POST", {
       role: role,
-      user: user,
+      username: user,
       password: password,
     });
 
@@ -103,7 +103,7 @@ const LoginPage = () => {
                     {role == "patient" ? "patient username" : "doctor username"}
                   </InputLabel>
                   <OutlinedInput
-                    id="user"
+                    id="username"
                     type="text"
                     value={user}
                     onChange={(e) => setUser(e.target.value)}

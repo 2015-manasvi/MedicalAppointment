@@ -3,11 +3,13 @@ const Doctor = require("../models/Doctors");
 const bcrypt = require("bcrypt");
 
 const login = async (req, res) => {
+  console.log(req.body);
   try {
     if (req.body.role == "patient") {
       const userDetails = await Patient.findOne({
         username: req.body.username,
       });
+      console.log("login", userDetails);
       if (!userDetails) {
         return res.status(400).json({ status: "error", msg: "not authorised" });
       }
