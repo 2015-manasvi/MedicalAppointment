@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UpdateModal from "./UpdateModal";
+import styles from "./Modal.module.css";
 
 const Patient = (props) => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -15,13 +16,18 @@ const Patient = (props) => {
           setShowUpdateModal={setShowUpdateModal}
         />
       )}
-
-      <div style={{ border: "2px solid black" }}>
-        <div className="col-sm-3">{props.name}</div>
-        <div className="col-sm-4">{props.email}</div>
-        <div className="col-sm-3">{props.phoneNumber}</div>
-
-        <button className="col-sm-3" onClick={() => setShowUpdateModal(true)}>
+      <tbody>
+        <tr>
+          <td>{props.name}</td>
+          <td>{props.email}</td>
+          <td>{props.phoneNumber}</td>
+        </tr>
+      </tbody>
+      <div className={styles.centered}>
+        <button
+          className={styles.button}
+          onClick={() => setShowUpdateModal(true)}
+        >
           update
         </button>
       </div>

@@ -10,11 +10,79 @@
 
 .modal {
   position: fixed;
-  background: white;
+  background: bisque;
   top: 30vh;
   bottom: 40vh;
   left: 10%;
   width: 80%;
   z-index: 100;
   overflow: hidden;
+}
+.container {
+  margin: auto;
+  top: 0;
+  width: 50%;
+  border: 15px solid green;
+  padding: 50px;
+  margin-top: 150px;
+}
+.h2 {
+  text-align: center;
+}
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.h1 {
+  text-align: center;
+  margin-top: 100px;
+  font-size: medium;
+}
+
+table {
+  border: 10px solid yellowgreen;
+  width: 800px;
+  height: 300px;
+  border-spacing: 10px;
+  margin-bottom: 300px;
+  background-color: bisque;
+}
+
+.head {
+  padding: 10px;
+  padding-top: 12px;
+
+  padding-bottom: 12px;
+
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+}
+.centered {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  position: relative;
+  left: 300px;
+}
+.button {
+  width: 200px;
+  background-color: beige;
+  border-radius: 20px;
+  border: 2px solid grey;
+}
+.center {
+  display: inline;
+  padding: 10px 20px;
 }
