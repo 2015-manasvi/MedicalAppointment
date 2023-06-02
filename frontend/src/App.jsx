@@ -6,16 +6,9 @@ import DoctorDashboard from "./components/DoctorDashboard";
 import DoctorDetails from "./components/Doctors/DoctorDetails";
 import LoginPage from "./components/LoginPage";
 import HomePage from "./components/HomePage";
-
+import SearchDoctor from "./components/Search/searchDoctor";
 const App = () => {
-  return (
-    <Routes>
-      {/* <Route exact path="/" element={<LoginPage />} />
-      <Route path="/" element={<HomePage />} />*/}
-      <Route exact path="/" element={<DoctorDashboard />} />
-      <Route path="/doctor" element={<DoctorDetails />} />
-    </Routes>
-  );
+  return <SearchDoctor />;
 };
 
 export default App;
