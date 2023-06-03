@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { fetchData } from "../helpers/common";
 import hospital from "../images/hospital.jpg";
 import UserContext from "../context/user";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -14,13 +15,14 @@ import {
 } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const userCtx = useContext(UserContext);
   const [role, setRole] = useState(""); // set thru the choosing of button
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("Meera01");
+  const [password, setPassword] = useState("password");
 
   const navigate = useNavigate();
+
   const handleLogin = async () => {
     const { ok, data } = await fetchData("/auth/login", "POST", {
       role: role,
@@ -28,32 +30,23 @@ const LoginPage = () => {
       password: password,
     });
 
-    // if (ok) {
-    //   userCtx.setUser(data);
-    //   userCtx.setRole(role);
-    //   if (role == "patient") {
-    //     userCtx.setAuthorised(true);
-    //   }
+    if (ok) {
+      userCtx.setAccessToken(data.access);
+      const decoded = jwt_decode(data.access);
+      userCtx.setRole(decoded.role);
+      if (decoded.role === "user") {
+        navigate("/patient-dashboard");
+      } else if (decoded.role === "doctor") {
+        navigate("/doctor-dashboard");
+      } else {
+        console.log("invalid Login");
+      }
 
-    //   if (role == "doctor") {
-    //     userCtx.setDoctor(data);
-    //   }
-    // } else {
-    //   console.log(data);
-    // }
-    if (role === "patient") {
-      navigate("/patient-dashboard");
-    } else if (role === "doctor") {
-      navigate("/doctor-dashboard");
-    } else {
-      console.log("invalid Login");
+      setRole("");
+      setUser("");
+      setPassword("");
     }
-
-    setRole("");
-    setUser("");
-    setPassword("");
   };
-
   const buttonStyling = {
     backgroundColor: "#004B64",
     fontWeight: 400,
@@ -85,7 +78,7 @@ const LoginPage = () => {
                 sx={buttonStyling}
                 variant="contained"
                 size="large"
-                onClick={() => setRole("patient")}
+                onClick={() => setRole("user")}
               >
                 Patient Login
               </Button>
