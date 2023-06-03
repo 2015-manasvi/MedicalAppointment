@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { fetchData } from "../helpers/common";
 import hospital from "../images/hospital.jpg";
 import UserContext from "../context/user";
+import { useNavigate } from "react-router-dom";
 import {
   Button,
   FormControl,
@@ -19,6 +20,7 @@ const LoginPage = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const handleLogin = async () => {
     const { ok, data } = await fetchData("/auth/login", "POST", {
       role: role,
@@ -26,19 +28,27 @@ const LoginPage = () => {
       password: password,
     });
 
-    if (ok) {
-      userCtx.setUser(data);
-      userCtx.setRole(role);
-      if (role == "patient") {
-        userCtx.setAuthorised(true);
-      }
+    // if (ok) {
+    //   userCtx.setUser(data);
+    //   userCtx.setRole(role);
+    //   if (role == "patient") {
+    //     userCtx.setAuthorised(true);
+    //   }
 
-      if (role == "doctor") {
-        userCtx.setDoctor(data);
-      }
+    //   if (role == "doctor") {
+    //     userCtx.setDoctor(data);
+    //   }
+    // } else {
+    //   console.log(data);
+    // }
+    if (role === "patient") {
+      navigate("/patient-dashboard");
+    } else if (role === "doctor") {
+      navigate("/doctor-dashboard");
     } else {
-      console.log(data);
+      console.log("invalid Login");
     }
+
     setRole("");
     setUser("");
     setPassword("");

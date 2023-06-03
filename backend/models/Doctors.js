@@ -1,21 +1,21 @@
 const mongoose = require("mongoose");
 
-// const slotSchema = new mongoose.Schema({
-//     time : {
-//         type: String,
-//     },
-//     isBooked : {
-//         type: Boolean,
-//         default: false
-//     }
-// })
+const slotSchema = new mongoose.Schema({
+  time: {
+    type: String,
+  },
+  isBooked: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-// const dateSchedule = new mongoose.Schema({
-//     date : {
-//         type: String
-//     },
-//     slots : [slotSchema]
-// })
+const dateSchedule = new mongoose.Schema({
+  date: {
+    type: String,
+  },
+  slots: [slotSchema],
+});
 
 const doctorSchema = new mongoose.Schema(
   {
@@ -60,7 +60,7 @@ const doctorSchema = new mongoose.Schema(
       maxLength: 50,
     },
 
-    //dates : [dateSchedule]
+    dates: [dateSchedule],
   },
   {
     collection: "doctors",
@@ -70,3 +70,13 @@ const doctorSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("doctors", doctorSchema);
+
+// const Doctor = mongoose.model("doctors", doctorSchema);
+// const Slot = mongoose.model("slot", slotSchema);
+// const DateSchedule = mongoose.model("dateschedule", dateSchedule);
+
+// module.exports = {
+//   Doctor,
+//   Slot,
+//   DateSchedule,
+// };

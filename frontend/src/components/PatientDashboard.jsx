@@ -10,6 +10,9 @@ const PatientDashboard = () => {
     //setShowPersonal(true);
     navigate("/patient");
   };
+  const searchClick = () => {
+    navigate("/search");
+  };
 
   return (
     <div className={styles.display}>
@@ -20,7 +23,9 @@ const PatientDashboard = () => {
             PERSONAL DETAILS
           </button>
         </div>
-        <button className={styles.view2}>SEARCH DOCTOR</button>
+        <button className={styles.view2} onClick={searchClick}>
+          SEARCH DOCTOR
+        </button>
         <button className={styles.view3}>APPOINTMENT STATUS</button>
         <button className={styles.view4}>UPCOMING APPOINTMENTS</button>
       </div>

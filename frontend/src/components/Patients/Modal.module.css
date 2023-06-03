@@ -89,6 +89,21 @@ td {
   border-radius: 20px;
   border: 2px solid grey;
 }
+.button1 {
+  width: 200px;
+  background-color: beige;
+  border-radius: 20px;
+  border: 2px solid grey;
+  margin-left: 200px;
+  margin-bottom: 40px;
+}
+.button2 {
+  width: 200px;
+  background-color: beige;
+  border-radius: 20px;
+  border: 2px solid grey;
+  margin-left: 200px;
+}
 .center {
   display: inline;
   padding: 10px 20px;

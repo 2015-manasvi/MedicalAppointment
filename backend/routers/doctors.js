@@ -4,11 +4,12 @@ const { check } = require("express-validator");
 const auth = require("../middleware/auth");
 const {
   getDoctors,
-  postDoctorById,
+
   putDoctors,
   deleteDoctors,
   patchDoctors,
   postDoctor,
+  getSlots,
 } = require("../controllers/doctors");
 const { validateInsertDoctorData } = require("../validators/doctors");
 
@@ -17,5 +18,6 @@ router.post("/doctors", postDoctor);
 router.put("/doctors", validateInsertDoctorData, putDoctors);
 router.delete("/doctors/:id", deleteDoctors);
 router.patch("/doctors/:id", patchDoctors);
+router.patch("/getslots", getSlots);
 
 module.exports = router;

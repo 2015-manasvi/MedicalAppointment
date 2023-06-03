@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Search.module.css";
+import { Link } from "react-router-dom";
 
 const SearchForm = ({ handleSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,6 +28,11 @@ const SearchForm = ({ handleSearch }) => {
         <button className={styles.button} type="submit">
           Search
         </button>
+        <Link to="/">
+          <button className={styles.button} type="submit">
+            GOBack
+          </button>
+        </Link>
       </form>
     </div>
   );

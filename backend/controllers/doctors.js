@@ -1,5 +1,26 @@
 const { validationResult } = require("express-validator");
 const Doctors = require("../models/Doctors");
+//const { Doctor, Slot, DateSchedule } = Doctors;
+
+const createDate = (date) => {
+  return new DateSchedule({
+    date: date,
+    slots: [
+      new Slot({
+        time: "09:00:00",
+        isBooked: false,
+      }),
+      new Slot({
+        time: "12:00:00",
+        isBooked: false,
+      }),
+      new Slot({
+        time: "15:00:00",
+        isBooked: false,
+      }),
+    ],
+  });
+};
 
 // GET : retrieve all doctors from the DB
 const getDoctors = async (req, res) => {
@@ -76,10 +97,60 @@ const patchDoctors = async (req, res) => {
   }
 };
 
+//to get slots available for date
+const getSlots = async (req, res) => {
+  try {
+    const date = req.body.date; // Date to book
+
+    const doctor = await Doctors.findOne({ id: req.body.id });
+
+    // Doctor not found
+    if (doctor === null) {
+      console.log("Doctor not found in the database!");
+      return res.status(201).json({
+        message: "Doctor not found in the database!",
+      });
+    }
+
+    // Doctor found
+    // Find the date
+    let count = 0;
+    for (const i of doctor.dates) {
+      if (i.date === date) {
+        return res.status(200).json(i);
+      }
+      count++;
+    }
+
+    const oldLength = count;
+
+    // Add new slots if date not found in the db
+    const dateSchedule = createDate(date);
+    const updatedDoctor = await Doctors.findOneAndUpdate(
+      { id: doctor.id },
+      { $push: { dates: dateSchedule } },
+      { new: true }
+    );
+
+    if (updatedDoctor) {
+      return res.status(200).json(updatedDoctor.dates[oldLength]);
+    } else {
+      const err = { err: "an error occurred!" };
+      throw err;
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({
+      message: err,
+    });
+  }
+};
+
 module.exports = {
   getDoctors,
   putDoctors,
   postDoctor,
   deleteDoctors,
   patchDoctors,
+  getSlots,
 };
