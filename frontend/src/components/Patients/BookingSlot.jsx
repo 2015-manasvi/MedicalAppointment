@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { fetchData } from "../../helpers/common";
 const BookingSlot = (props) => {
   // console.log(props.location.state)
-  const { date, doctor } = props.location.state;
+  // const { date, doctor } = props.location.state;
   // console.log("Date: " + date + " DoctorId: " + doctorId);
   const [dateId, setdateId] = useState();
   const [Slots, setSlots] = useState([]);
 
   useEffect(() => {
     const fetchDate = async (dateToPost) => {
-      const { data } = await Axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/doctors/get-slots/`,
-        {
-          doctorId: doctor._id,
-          date: dateToPost,
-        }
-      );
+      const { data } = await fetchData("/api/get-slots", {
+        id: doctor.id,
+        date: dateToPost,
+      });
       console.log(data);
-      setdateId(data._id);
+      setdateId(data.id);
       setSlots(data.slots);
     };
 
@@ -47,12 +44,9 @@ const BookingSlot = (props) => {
 
   return (
     <div className="bg-dark" style={{ height: "100vh" }}>
-      <Navbar />
       <div>
         <div className="row m-5" style={{ maxWidth: "100%" }}>
-          <div className="col-3 col-md-3 p-4 bg-white ">
-            <LeftsidePatient />
-          </div>
+          <div className="col-3 col-md-3 p-4 bg-white "></div>
           <div
             className="col-9 col-md-9 p-4"
             style={{
@@ -70,7 +64,7 @@ const BookingSlot = (props) => {
               </thead>
               <tbody>
                 {Slots.map((slot) => (
-                  <tr key={slot._id}>
+                  <tr key={slot.id}>
                     <th scope="row">{slot.time}</th>
                     {slot.isBooked ? (
                       <td>Booked</td>
@@ -82,7 +76,7 @@ const BookingSlot = (props) => {
                             data: {
                               dateId: dateId,
                               doctor: doctor,
-                              slotId: slot._id,
+                              slotId: slot.id,
                             },
                           }}
                         >

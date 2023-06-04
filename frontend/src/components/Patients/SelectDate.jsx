@@ -54,16 +54,16 @@ const Selectdate = (props) => {
               </div>
               <br />
               <div>
-                {/* <Link
+                <Link
                   to={{
                     pathname: "/book-slot",
                     state: {
                       date: date,
-                      doctor: props.location.doctor.doctor,
+                      //doctor: props.location.doctor.doctor,
                     },
                   }}
-                >*/}
-                <Link to="/book-slot">
+                >
+                  {/*  <Link to="/book-slot">*/}
                   <button className={styles.button2}>Confirm</button>
                 </Link>
               </div>

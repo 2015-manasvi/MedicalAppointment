@@ -1,25 +1,18 @@
 const { validationResult } = require("express-validator");
 const Doctors = require("../models/Doctors");
-//const { Doctor, Slot, DateSchedule } = Doctors;
+const { Doctor, Slot, DateSchedule } = Doctors;
 
 const createDate = (date) => {
-  return new DateSchedule({
+  const dateSchedule = {
     date: date,
     slots: [
-      new Slot({
-        time: "09:00:00",
-        isBooked: false,
-      }),
-      new Slot({
-        time: "12:00:00",
-        isBooked: false,
-      }),
-      new Slot({
-        time: "15:00:00",
-        isBooked: false,
-      }),
+      { time: "09:00:00", isBooked: false },
+      { time: "12:00:00", isBooked: false },
+      { time: "15:00:00", isBooked: false },
     ],
-  });
+  };
+
+  return dateSchedule;
 };
 
 // GET : retrieve all doctors from the DB
@@ -104,14 +97,6 @@ const getSlots = async (req, res) => {
 
     const doctor = await Doctors.findOne({ id: req.body.id });
 
-    // Doctor not found
-    if (doctor === null) {
-      console.log("Doctor not found in the database!");
-      return res.status(201).json({
-        message: "Doctor not found in the database!",
-      });
-    }
-
     // Doctor found
     // Find the date
     let count = 0;
@@ -127,7 +112,7 @@ const getSlots = async (req, res) => {
     // Add new slots if date not found in the db
     const dateSchedule = createDate(date);
     const updatedDoctor = await Doctors.findOneAndUpdate(
-      { id: doctor.id },
+      { id: req.body.id },
       { $push: { dates: dateSchedule } },
       { new: true }
     );

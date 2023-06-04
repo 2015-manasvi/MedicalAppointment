@@ -1,6 +1,7 @@
 import React from "react";
 //import style from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SearchResults = ({ results }) => {
   if (results.length === 0) {
@@ -8,10 +9,10 @@ const SearchResults = ({ results }) => {
       <h5 style={{ textAlign: "center" }}>Please Enter Valid Doctor Name</h5>
     );
   }
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/selectdate");
-  };
+  // const navigate = useNavigate();
+  // const handleClick = () => {
+  //   navigate("/selectdate");
+  // };
   return (
     <div className="row">
       {results.map((item) => (
@@ -41,13 +42,14 @@ const SearchResults = ({ results }) => {
                   className=" col align-self-end col-md-2 offset-md-3 inline"
                   style={{ textAlign: "center" }}
                 >
-                  <button
-                    className="btn btn-sm btn-primary"
-                    onClick={handleClick}
+                  <Link
+                    to={{
+                      pathname: "/selectdate",
+                      doctor: { doctor: item },
+                    }}
                   >
-                    {" "}
-                    Book
-                  </button>
+                    <button className="btn btn-sm btn-primary"> Book</button>
+                  </Link>
                 </div>
               </div>
             </div>

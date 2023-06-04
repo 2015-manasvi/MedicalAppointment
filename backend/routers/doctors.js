@@ -18,6 +18,6 @@ router.post("/doctors", postDoctor);
 router.put("/doctors", validateInsertDoctorData, putDoctors);
 router.delete("/doctors/:id", deleteDoctors);
 router.patch("/doctors/:id", patchDoctors);
-router.patch("/getslots", getSlots);
+router.post("/getslots", getSlots);
 
 module.exports = router;
