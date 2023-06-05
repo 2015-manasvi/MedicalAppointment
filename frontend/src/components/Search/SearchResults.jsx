@@ -2,6 +2,7 @@ import React from "react";
 //import style from "./Search.module.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import AppointmentStatus from "../Patients/AppointmentStatus";
 
 const SearchResults = ({ results }) => {
   if (results.length === 0) {
@@ -13,6 +14,7 @@ const SearchResults = ({ results }) => {
   // const handleClick = () => {
   //   navigate("/selectdate");
   // };
+
   return (
     <div className="row">
       {results.map((item) => (
@@ -22,35 +24,37 @@ const SearchResults = ({ results }) => {
               <div className="text-info">
                 <h6>
                   Doctor Name:
-                  <span className="text-uppercase"> {item.name}</span>
+                  <span className="text-uppercase">{item.name}</span>
                 </h6>
               </div>
-              <div>
-                <b>Email:</b>
-                {item.email}
-              </div>
-              <div>
-                <b>Specialization : </b>
-                {item.specialization}
-              </div>
-              <div>
-                <b>Phone Number : </b>
-                {item.phoneNumber}
-              </div>
-              <div className="row mb-0 pb-0">
-                <div
-                  className=" col align-self-end col-md-2 offset-md-3 inline"
-                  style={{ textAlign: "center" }}
+            </div>
+
+            <div>
+              <b>Email:</b>
+              {item.email}
+            </div>
+            <div>
+              <b>Specialization : </b>
+              {item.specialization}
+            </div>
+            <div>
+              <b>Phone Number : </b>
+              {item.phoneNumber}
+            </div>
+            <div className="row mb-0 pb-0">
+              <div
+                className=" col align-self-end col-md-2 offset-md-3 inline"
+                style={{ textAlign: "center" }}
+              >
+                <Link
+                  to={{
+                    pathname: "/selectdate",
+
+                    state: { doctorName: item.name },
+                  }}
                 >
-                  <Link
-                    to={{
-                      pathname: "/selectdate",
-                      doctor: { doctor: item },
-                    }}
-                  >
-                    <button className="btn btn-sm btn-primary"> Book</button>
-                  </Link>
-                </div>
+                  <button className="btn btn-sm btn-primary"> Book</button>
+                </Link>
               </div>
             </div>
           </div>

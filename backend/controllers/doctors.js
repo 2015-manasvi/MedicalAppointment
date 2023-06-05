@@ -4,7 +4,7 @@ const { Doctor, Slot, DateSchedule } = Doctors;
 
 const createDate = (date) => {
   const dateSchedule = {
-    date: date,
+    dates: date,
     slots: [
       { time: "09:00:00", isBooked: false },
       { time: "12:00:00", isBooked: false },
@@ -96,7 +96,7 @@ const getSlots = async (req, res) => {
     const date = req.body.date; // Date to book
 
     const doctor = await Doctors.findOne({ id: req.body.id });
-
+    console.log(doctor);
     // Doctor found
     // Find the date
     let count = 0;

@@ -25,7 +25,6 @@ const SearchDoctor = () => {
     );
     setFilteredData(filteredResults);
   };
-
   return (
     <div>
       <SearchForm handleSearch={handleSearch} />

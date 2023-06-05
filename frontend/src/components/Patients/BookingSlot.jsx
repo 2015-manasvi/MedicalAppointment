@@ -1,49 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchData } from "../../helpers/common";
-const BookingSlot = (props) => {
+//import { useLocation } from "react-router-dom";
+const BookingSlot = (date) => {
   // console.log(props.location.state)
-  // const { date, doctor } = props.location.state;
-  // console.log("Date: " + date + " DoctorId: " + doctorId);
-  const [dateId, setdateId] = useState();
-  const [Slots, setSlots] = useState([]);
+  //const location = useLocation();
+  //const { date } = location.state;
+  // console.log("Date: " + date);
+  //const [dateId, setdateId] = useState();
+  const [slots, setSlots] = useState([]);
 
-  useEffect(() => {
-    const fetchDate = async (dateToPost) => {
-      const { data } = await fetchData("/api/get-slots", {
-        id: doctor.id,
-        date: dateToPost,
-      });
-      console.log(data);
-      setdateId(data.id);
+  const getSlots = async () => {
+    const { ok, data } = await fetchData("/api/getslots", "POST", {
+      id: "doctor003",
+    });
+    if (ok) {
+      console.log(data.slots);
       setSlots(data.slots);
-    };
-
-    function getDateString() {
-      let finalDate = date.getFullYear().toString();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-
-      if (month < 10) {
-        finalDate += "-0" + month.toString();
-      } else {
-        finalDate += "-" + month.toString();
-      }
-
-      if (day < 10) {
-        finalDate += "-0" + day.toString();
-      } else {
-        finalDate += "-" + day.toString();
-      }
-
-      return finalDate;
+    } else {
+      console.log(data);
     }
-    const dateToSend = getDateString();
-    fetchDate(dateToSend);
+  };
+  // setSlots("");
+  useEffect(() => {
+    getSlots();
   }, []);
 
+  //     function getDateString() {
+  //       const finalDate = date.getYear().toString();
+  //       const month = date.getMonth() + 1;
+  //       const day = date.getDate();
+
+  //       if (month < 10) {
+  //         finalDate += "-0" + month.toString();
+  //       } else {
+  //         finalDate += "-" + month.toString();
+  //       }
+
+  //       if (day < 10) {
+  //         finalDate += "-0" + day.toString();
+  //       } else {
+  //         finalDate += "-" + day.toString();
+  //       }
+
+  //       return finalDate;
+  //     }
+  //     const dateToSend = getDateString();
+  //     fetchDate(dateToSend);
+
   return (
-    <div className="bg-dark" style={{ height: "100vh" }}>
+    <div style={{ height: "100vh" }}>
       <div>
         <div className="row m-5" style={{ maxWidth: "100%" }}>
           <div className="col-3 col-md-3 p-4 bg-white "></div>
@@ -55,7 +61,7 @@ const BookingSlot = (props) => {
               backgroundColor: "#6c757d",
             }}
           >
-            <table className="table table-hover table-dark">
+            <table className="table table-hover ">
               <thead>
                 <tr>
                   <th scope="col">Slot</th>
@@ -63,25 +69,14 @@ const BookingSlot = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {Slots.map((slot) => (
-                  <tr key={slot.id}>
+                {slots.map((slot) => (
+                  <tr key={slot._id}>
                     <th scope="row">{slot.time}</th>
                     {slot.isBooked ? (
                       <td>Booked</td>
                     ) : (
                       <td>
-                        <Link
-                          to={{
-                            pathname: "/patient/payment",
-                            data: {
-                              dateId: dateId,
-                              doctor: doctor,
-                              slotId: slot.id,
-                            },
-                          }}
-                        >
-                          Book Now
-                        </Link>
+                        <Link to="/appointment-status">Book Now</Link>
                       </td>
                     )}
                   </tr>

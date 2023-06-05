@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Calendar from "react-calendar";
 import styles from "./Modal.module.css";
+import BookingSlot from "./BookingSlot";
+import { useLocation } from "react-router-dom";
 
 const Selectdate = (props) => {
   const [date, setDate] = useState(new Date());
-
+  //const { date: selectedDate } = useParams();
+  const location = useLocation();
+  const doctorName = location.state && location.state.doctorName;
+  console.log(doctorName);
+  //const renderAnotherComponent = <BookingSlot date={date} />;
   const onChange = (date) => {
     setDate(date);
   };
@@ -54,18 +60,11 @@ const Selectdate = (props) => {
               </div>
               <br />
               <div>
-                <Link
-                  to={{
-                    pathname: "/book-slot",
-                    state: {
-                      date: date,
-                      //doctor: props.location.doctor.doctor,
-                    },
-                  }}
-                >
-                  {/*  <Link to="/book-slot">*/}
+                <Link to={{ pathname: "/book-slot", state: { date: date } }}>
+                  {/* <Link to="/book-slot">*/}
                   <button className={styles.button2}>Confirm</button>
                 </Link>
+                {/*{renderAnotherComponent}*/}
               </div>
             </div>
           </div>
