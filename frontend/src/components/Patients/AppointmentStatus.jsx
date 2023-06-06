@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import styles from "./Modal.module.css";
 
 const AppointmentStatus = (props) => {
+  const navigate = useNavigate();
   const location = useLocation();
   //console.log("location value:", location);
   const { date, doctorName, slot } = location.state;
   console.log("datevalue here:", date);
   console.log("doctorName here:", doctorName);
   console.log("slot value:", slot);
+  const handleButtonClick = () => {
+    navigate("/patient-dashboard");
+  };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
+      <div className={styles.h1}>
+        <h2>Appointment Confirmation</h2>
+      </div>
       <div>
-        <div className="row m-5" style={{ maxWidth: "100%" }}>
-          <div className="col-3 col-md-3 p-4 bg-white "></div>
+        <div className="row m-4" style={{ maxWidth: "100%" }}>
+          <div className="col-3 col-md-3 p-4  "></div>
           <div
             className="col-9 col-md-9 p-4"
             style={{
               border: "15px solid yellow ",
-              height: "80vh",
+              height: "60vh",
               backgroundColor: "#6c757d",
             }}
           >
@@ -40,7 +47,11 @@ const AppointmentStatus = (props) => {
                 </tr>
               </tbody>
             </table>
-            <button className={styles.button}>Logout</button>
+            <div className={styles.centered}>
+              <button className={styles.button} onClick={handleButtonClick}>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>

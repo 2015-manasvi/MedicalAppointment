@@ -18,8 +18,8 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 const LoginPage = (props) => {
   const userCtx = useContext(UserContext);
   const [role, setRole] = useState(""); // set thru the choosing of button
-  const [user, setUser] = useState("Meera01");
-  const [password, setPassword] = useState("password");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -103,7 +103,7 @@ const LoginPage = (props) => {
               <Box display="flex" justifyContent="center" alignItems="center">
                 <FormControl variant="outlined">
                   <InputLabel htmlFor="user">
-                    {role == "patient" ? "patient username" : "doctor username"}
+                    {role == "user" ? "patient username" : "doctor username"}
                   </InputLabel>
                   <OutlinedInput
                     id="username"

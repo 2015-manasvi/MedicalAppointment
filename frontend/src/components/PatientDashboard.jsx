@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const PatientDashboard = () => {
   //const [personal, setShowPersonal] = useState(false);
   const navigate = useNavigate();
-  const handleButtonClick = () => {
+  const ShowPersonalDetail = () => {
     //setShowPersonal(true);
     navigate("/patient");
   };
@@ -19,14 +19,14 @@ const PatientDashboard = () => {
       <div className={styles.patient}>PATIENT DASHBOARD</div>
       <div className={styles.view}>
         <div>
-          <button className={styles.view1} onClick={handleButtonClick}>
+          <button className={styles.view1} onClick={ShowPersonalDetail}>
             PERSONAL DETAILS
           </button>
         </div>
         <button className={styles.view2} onClick={searchClick}>
           SEARCH DOCTOR
         </button>
-        <button className={styles.view3}>APPOINTMENT STATUS</button>
+
         <button className={styles.view4}>UPCOMING APPOINTMENTS</button>
       </div>
     </div>
