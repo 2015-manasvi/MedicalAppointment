@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
-const auth = require("../middleware/auth");
+
 const {
   getDoctors,
-
   putDoctors,
   deleteDoctors,
   patchDoctors,
@@ -12,6 +11,7 @@ const {
   getSlots,
 } = require("../controllers/doctors");
 const { validateInsertDoctorData } = require("../validators/doctors");
+const { doctorAuth } = require("../middleware/auth");
 
 router.get("/doctors", getDoctors);
 router.post("/doctors", postDoctor);

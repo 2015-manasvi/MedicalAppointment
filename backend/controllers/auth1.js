@@ -14,7 +14,7 @@ const register = async (req, res) => {
     await AuthModel.create({
       username: req.body.username,
       hash,
-      role: req.body.role || "user",
+      role: req.body.role || "user" || "doctor",
     });
     res.json({ status: "ok", msg: "user registered" });
   } catch (error) {

@@ -1,4 +1,3 @@
-const { validationResult } = require("express-validator");
 const Appointments = require("../models/Appointments");
 
 //get
@@ -41,7 +40,7 @@ const putAppointments = async (req, res) => {
 
 const deleteAppointments = async (req, res) => {
   try {
-    await Doctors.findByIdAndDelete(req.params.id);
+    await Appointments.findByIdAndDelete(req.params.id);
     res.json({ status: "ok", msg: "appointment detail deleted" });
   } catch (error) {
     console.error(error.message);
