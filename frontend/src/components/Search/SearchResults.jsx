@@ -1,8 +1,5 @@
 import React from "react";
-//import style from "./Search.module.css";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import AppointmentStatus from "../Patients/AppointmentStatus";
 
 const SearchResults = ({ results }) => {
   if (results.length === 0) {
@@ -10,10 +7,6 @@ const SearchResults = ({ results }) => {
       <h5 style={{ textAlign: "center" }}>Please Enter Valid Doctor Name</h5>
     );
   }
-  // const navigate = useNavigate();
-  // const handleClick = () => {
-  //   navigate("/selectdate");
-  // };
 
   return (
     <div className="row">
@@ -49,9 +42,8 @@ const SearchResults = ({ results }) => {
                 <Link
                   to={{
                     pathname: "/selectdate",
-
-                    state: { doctorName: item.name },
                   }}
+                  state={{ doctorName: item.name }}
                 >
                   <button className="btn btn-sm btn-primary"> Book</button>
                 </Link>

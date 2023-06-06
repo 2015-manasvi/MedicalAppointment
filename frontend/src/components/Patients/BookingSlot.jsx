@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchData } from "../../helpers/common";
-//import { useLocation } from "react-router-dom";
-const BookingSlot = (date) => {
-  // console.log(props.location.state)
-  //const location = useLocation();
-  //const { date } = location.state;
-  // console.log("Date: " + date);
+import { useLocation } from "react-router-dom";
+const BookingSlot = (props) => {
+  const location = useLocation();
+  //console.log("location value:", location);
+  const { date, doctorName } = location.state;
+  //const doctorName = location.state;
+  console.log("doctor Name:", doctorName);
+  console.log("Date value: ", date);
   //const [dateId, setdateId] = useState();
   const [slots, setSlots] = useState([]);
 
@@ -21,32 +23,10 @@ const BookingSlot = (date) => {
       console.log(data);
     }
   };
-  // setSlots("");
+
   useEffect(() => {
     getSlots();
   }, []);
-
-  //     function getDateString() {
-  //       const finalDate = date.getYear().toString();
-  //       const month = date.getMonth() + 1;
-  //       const day = date.getDate();
-
-  //       if (month < 10) {
-  //         finalDate += "-0" + month.toString();
-  //       } else {
-  //         finalDate += "-" + month.toString();
-  //       }
-
-  //       if (day < 10) {
-  //         finalDate += "-0" + day.toString();
-  //       } else {
-  //         finalDate += "-" + day.toString();
-  //       }
-
-  //       return finalDate;
-  //     }
-  //     const dateToSend = getDateString();
-  //     fetchDate(dateToSend);
 
   return (
     <div style={{ height: "100vh" }}>
@@ -76,7 +56,18 @@ const BookingSlot = (date) => {
                       <td>Booked</td>
                     ) : (
                       <td>
-                        <Link to="/appointment-status">Book Now</Link>
+                        <Link
+                          to={{
+                            pathname: "/appointment-status",
+                          }}
+                          state={{
+                            date: location.state.date,
+                            doctorName: location.state.doctorName,
+                            slot: slot.time,
+                          }}
+                        >
+                          Book Now
+                        </Link>
                       </td>
                     )}
                   </tr>
