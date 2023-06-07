@@ -7,6 +7,12 @@ const DoctorDashboard = () => {
   const handleButtonClick = () => {
     navigate("/doctor");
   };
+  const handleClick = () => {
+    navigate("/schedule");
+  };
+  const handleLogout = () => {
+    navigate("/");
+  };
   return (
     <div className={styles.display}>
       <div className={styles.patient}>ADMIN DASHBOARD</div>
@@ -15,7 +21,14 @@ const DoctorDashboard = () => {
           DOCTOR DETAILS
         </button>
 
-        <button className={styles.view3}>UPCOMING APPOINTMENTS</button>
+        <button className={styles.view3} onClick={handleClick}>
+          APPOINTMENT DETAILS
+        </button>
+        <div className={styles.centerd}>
+          <button className={styles.button} onClick={handleLogout}>
+            LOGOUT
+          </button>
+        </div>
       </div>
     </div>
   );

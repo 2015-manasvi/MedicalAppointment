@@ -11,6 +11,7 @@ import BookingSlot from "./components/Patients/BookingSlot";
 import UserContext from "./context/user";
 import AppointmentStatus from "./components/Patients/AppointmentStatus";
 import UpcomingAppointments from "./components/Patients/UpcomingAppointments";
+import DoctorSchedule from "./components/Doctors/DoctorSchedule";
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState();
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/appointment" element={<UpcomingAppointments />} />
         <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
         <Route path="/doctor" element={<DoctorDetails />} />
+        <Route path="/schedule" element={<DoctorSchedule />} />
       </Routes>
     </UserContext.Provider>
   );
