@@ -24,11 +24,16 @@ const LoginPage = (props) => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const { ok, data } = await fetchData("/auth/userlogin", undefined, "POST", {
-      role: role,
-      username: user,
-      password: password,
-    });
+    const { ok, data } = await fetchData(
+      "/auth/userlogin",
+      userCtx.accessToken,
+      "POST",
+      {
+        role: role,
+        username: user,
+        password: password,
+      }
+    );
 
     if (ok) {
       userCtx.setAccessToken(data.access);
