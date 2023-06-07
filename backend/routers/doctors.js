@@ -11,13 +11,13 @@ const {
   getSlots,
 } = require("../controllers/doctors");
 const { validateInsertDoctorData } = require("../validators/doctors");
-const { doctorAuth } = require("../middleware/auth");
+const { adminAuth, userAuth } = require("../middleware/auth");
 
-router.get("/doctors", getDoctors);
-router.post("/doctors", postDoctor);
-router.put("/doctors", validateInsertDoctorData, putDoctors);
-router.delete("/doctors/:id", deleteDoctors);
-router.patch("/doctors/:id", patchDoctors);
+router.get("/doctors", userAuth, getDoctors);
+router.post("/doctors", adminAuth, postDoctor);
+router.put("/doctors", adminAuth, validateInsertDoctorData, putDoctors);
+router.delete("/doctors/:id", adminAuth, deleteDoctors);
+router.patch("/doctors/:id", adminAuth, patchDoctors);
 router.post("/getslots", getSlots);
 
 module.exports = router;

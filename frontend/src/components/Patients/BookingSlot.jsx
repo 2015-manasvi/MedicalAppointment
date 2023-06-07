@@ -13,7 +13,7 @@ const BookingSlot = (props) => {
   const [slots, setSlots] = useState([]);
 
   const getSlots = async () => {
-    const { ok, data } = await fetchData("/api/getslots", "POST", {
+    const { ok, data } = await fetchData("/api/getslots", undefined, "POST", {
       id: "doctor003",
     });
     if (ok) {

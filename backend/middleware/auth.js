@@ -9,12 +9,12 @@ const userAuth = (req, res, next) => {
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_SECRET);
-      if (decoded.role === "user") {
-        req.decoded = decoded;
-        next();
-      } else {
-        throw new Error();
-      }
+      // if (decoded.role === "user") {
+      req.decoded = decoded;
+      next();
+      // } else {
+      //   throw new Error();
+      // }
     } catch (error) {
       return res.status(401).json({
         status: "error",
@@ -26,7 +26,7 @@ const userAuth = (req, res, next) => {
   }
 };
 
-const doctorAuth = (req, res, next) => {
+const adminAuth = (req, res, next) => {
   if (!("authorization" in req.headers)) {
     return res.json(400).json({ status: "error", msg: "not token found" });
   }
@@ -52,5 +52,5 @@ const doctorAuth = (req, res, next) => {
   }
 };
 
-module.exports = { userAuth, doctorAuth };
+module.exports = { userAuth, adminAuth };
 // todo : export userAuth and doctorAuth after separating the two

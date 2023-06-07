@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { fetchData } from "../../helpers/common";
 import Doctor from "./doctor";
 import styles from "./Modal.module.css";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/user";
 
 const DoctorDetails = () => {
+  const userCtx = useContext(UserContext);
   const [doctor, setDoctor] = useState([]);
 
   const emailRef = useRef();
@@ -15,7 +17,7 @@ const DoctorDetails = () => {
   };
 
   const getDoctors = async () => {
-    const { ok, data } = await fetchData("/api/doctors");
+    const { ok, data } = await fetchData("/api/doctors", userCtx.accessToken);
 
     if (ok) {
       setDoctor(data);
@@ -46,7 +48,7 @@ const DoctorDetails = () => {
               <th className={styles.head}>SPECIALIZATION</th>
             </tr>
           </thead>
-          {doctor.slice(0, 1).map((item) => {
+          {doctor.slice(0, 8).map((item) => {
             return (
               <Doctor
                 key={item._id}

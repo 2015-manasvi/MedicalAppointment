@@ -1,17 +1,25 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import ReactDOM from "react-dom";
 import { fetchData } from "../../helpers/common";
 import styles from "./Modal.module.css";
+import UserContext from "../../context/user";
 
 const OverLay = (props) => {
+  const userCtx = useContext(UserContext);
   const emailRef = useRef("");
   const phoneNumberRef = useRef("");
 
   const updatePatient = async (id) => {
-    const { ok, data } = await fetchData("/api/patients/" + id, "PATCH", {
-      email: emailRef.current.value,
-      phoneNumber: phoneNumberRef.current.value,
-    });
+    const { ok, data } = await fetchData(
+      "/api/patients/" + id,
+      userCtx.accessToken,
+      "PATCH",
+
+      {
+        email: emailRef.current.value,
+        phoneNumber: phoneNumberRef.current.value,
+      }
+    );
 
     if (ok) {
       props.getPatients();

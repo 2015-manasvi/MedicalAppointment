@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { fetchData } from "../../helpers/common";
 import Patient from "./patient";
 import styles from "./Modal.module.css";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../context/user";
 
 const PatientDetails = () => {
+  const userCtx = useContext(UserContext);
   const [patient, setPatient] = useState([]);
 
   const emailRef = useRef();
@@ -16,7 +18,7 @@ const PatientDetails = () => {
   };
 
   const getPatients = async () => {
-    const { ok, data } = await fetchData("/api/patients");
+    const { ok, data } = await fetchData("/api/patients", userCtx.accessToken);
 
     if (ok) {
       setPatient(data);

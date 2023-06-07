@@ -12,10 +12,15 @@ const { check } = require("express-validator");
 const { validateInsertPatientData } = require("../validators/patients");
 const { userAuth } = require("../middleware/auth");
 
-router.get("/patients", getPatients);
+router.get("/patients", userAuth, getPatients);
 router.post("/patients", postPatient);
-router.put("/patients", validateInsertPatientData, putPatients);
-router.delete("/patients/:id", deletePatients);
-router.patch("/patients/:id", validateInsertPatientData, patchPatients);
+router.put("/patients", userAuth, validateInsertPatientData, putPatients);
+router.delete("/patients/:id", userAuth, deletePatients);
+router.patch(
+  "/patients/:id",
+  userAuth,
+  validateInsertPatientData,
+  patchPatients
+);
 
 module.exports = router;

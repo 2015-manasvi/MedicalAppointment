@@ -23,7 +23,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+const Userlogin = async (req, res) => {
   try {
     const auth = await AuthModel.findOne({ username: req.body.username });
     if (!auth) {
@@ -55,6 +55,40 @@ const login = async (req, res) => {
     return res.status(400).json({ status: "error", msg: "login failed" });
   }
 };
+
+const Adminlogin = async (req, res) => {
+  try {
+    const auth = await AuthModel.findOne({ username: req.body.username });
+    if (!auth) {
+      return res.status(400).json({ status: "error", msg: "not authorised" });
+    }
+    const result = await bcrypt.compare(req.body.password, auth.hash);
+    if (!result) {
+      return res
+        .status(400)
+        .json({ status: "error", msg: "username or password error" });
+    }
+
+    const payload = {
+      username: auth.username,
+      role: auth.role,
+    };
+    const access = jwt.sign(payload, process.env.ACCESS_SECRET, {
+      expiresIn: "20m",
+      jwtid: uuidv4(),
+    });
+
+    const refresh = jwt.sign(payload, process.env.REFRESH_SECRET, {
+      expiresIn: "20d",
+      jwtid: uuidv4(),
+    });
+    res.json({ access, refresh });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(400).json({ status: "error", msg: "login failed" });
+  }
+};
+
 const refresh = async (req, res) => {
   try {
     const decoded = jwt.verify(req.body.refresh, process.env.REFRESH_SECRET);
@@ -72,6 +106,7 @@ const refresh = async (req, res) => {
 
 module.exports = {
   register,
-  login,
+  Userlogin,
+  Adminlogin,
   refresh,
 };

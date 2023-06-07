@@ -24,7 +24,7 @@ const LoginPage = (props) => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    const { ok, data } = await fetchData("/auth/login", "POST", {
+    const { ok, data } = await fetchData("/auth/userlogin", undefined, "POST", {
       role: role,
       username: user,
       password: password,
@@ -34,6 +34,7 @@ const LoginPage = (props) => {
       userCtx.setAccessToken(data.access);
       const decoded = jwt_decode(data.access);
       userCtx.setRole(decoded.role);
+      console.log("decoded", decoded.role);
       if (decoded.role === "user") {
         navigate("/patient-dashboard");
       } else if (decoded.role === "doctor") {

@@ -9,12 +9,10 @@ const DoctorDashboard = () => {
   };
   return (
     <div className={styles.display}>
-      <div className={styles.patient}>DOCTOR DASHBOARD</div>
+      <div className={styles.patient}>ADMIN DASHBOARD</div>
       <div className={styles.view}>
-        <button className={styles.view1}>TODAY SCHEDULE</button>
-
         <button className={styles.view2} onClick={handleButtonClick}>
-          PERSONAL DETAILS
+          DOCTOR DETAILS
         </button>
 
         <button className={styles.view3}>UPCOMING APPOINTMENTS</button>
