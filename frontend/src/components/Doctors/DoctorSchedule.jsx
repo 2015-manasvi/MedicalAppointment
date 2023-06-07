@@ -76,7 +76,7 @@ const DoctorSchedule = (props) => {
                         className={styles.button}
                         onClick={() => cancelAppointment(item._id)}
                       >
-                        Cancel
+                        Cancel Appointment
                       </button>
                     </td>
                   </tr>

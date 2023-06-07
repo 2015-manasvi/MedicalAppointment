@@ -23,8 +23,7 @@ const SearchResults = ({ results }) => {
             </div>
 
             <div>
-              <b>Email:</b>
-              {item.email}
+              <b>Email:</b>s{item.email}
             </div>
             <div>
               <b>Specialization : </b>

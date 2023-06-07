@@ -25,6 +25,19 @@ const DoctorDetails = () => {
       console.log(data);
     }
   };
+  const deleteDoctor = async (id) => {
+    const { ok, data } = await fetchData(
+      "/api/doctors/" + id,
+      userCtx.accessToken,
+      "DELETE"
+    );
+
+    if (ok) {
+      getDoctors();
+    } else {
+      console.log(data);
+    }
+  };
 
   useEffect(() => {
     getDoctors();
@@ -32,10 +45,7 @@ const DoctorDetails = () => {
 
   return (
     <>
-      <div className={styles.h1}>
-        <h1>PERSONAL DETAILS</h1>
-      </div>
-      <div className={styles.App}>
+      <div>
         <br />
         <br />
 
@@ -48,7 +58,7 @@ const DoctorDetails = () => {
               <th className={styles.head}>SPECIALIZATION</th>
             </tr>
           </thead>
-          {doctor.slice(0, 8).map((item) => {
+          {doctor.map((item) => {
             return (
               <Doctor
                 key={item._id}
@@ -58,6 +68,7 @@ const DoctorDetails = () => {
                 phoneNumber={item.phoneNumber}
                 specialization={item.specialization}
                 getDoctors={getDoctors}
+                deleteDoctor={deleteDoctor}
               />
             );
           })}

@@ -23,16 +23,24 @@ const Doctor = (props) => {
           <td>{props.email}</td>
           <td>{props.phoneNumber}</td>
           <td>{props.specialization}</td>
+
+          <td>
+            <button
+              className={styles.button}
+              onClick={() => setShowUpdateModal(true)}
+            >
+              Update
+            </button>
+
+            <button
+              className={styles.button}
+              onClick={() => props.deleteDoctor(props.id)}
+            >
+              delete
+            </button>
+          </td>
         </tr>
       </tbody>
-      <div className={styles.centered}>
-        <button
-          className={styles.button}
-          onClick={() => setShowUpdateModal(true)}
-        >
-          Update
-        </button>
-      </div>
     </>
   );
 };

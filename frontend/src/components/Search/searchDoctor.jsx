@@ -13,6 +13,7 @@ const SearchDoctor = () => {
     try {
       const { ok, data } = await fetchData("/api/doctors", userCtx.accessToken);
       setData(data);
+      setFilteredData(data);
     } catch (error) {
       console.error(error);
     }
