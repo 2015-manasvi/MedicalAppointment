@@ -14,7 +14,9 @@ const AppointmentStatus = (props) => {
   const handleButtonClick = () => {
     navigate("/patient-dashboard");
   };
-
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <div>
       <div className={styles.h1}>
@@ -47,6 +49,7 @@ const AppointmentStatus = (props) => {
                 </tr>
               </tbody>
             </table>
+
             <div className={styles.centered}>
               <Link
                 to={{
