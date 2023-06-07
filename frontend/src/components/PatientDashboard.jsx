@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import styles from "./Dashboard.module.css";
-import PatientDetails from "./Patients/PatientDetails";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const PatientDashboard = () => {
-  //const [personal, setShowPersonal] = useState(false);
   const navigate = useNavigate();
+
+  //const location = useLocation();
+  //console.log("location value:", location);
+  //const { date, doctorName, slot } = location.state;
   const ShowPersonalDetail = () => {
-    //setShowPersonal(true);
     navigate("/patient");
   };
   const searchClick = () => {
     navigate("/search");
   };
-
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <div className={styles.display}>
       <div className={styles.patient}>PATIENT DASHBOARD</div>
@@ -24,10 +27,13 @@ const PatientDashboard = () => {
           </button>
         </div>
         <button className={styles.view2} onClick={searchClick}>
-          SEARCH DOCTOR
+          BOOKING APPOINTMENT
         </button>
-
-        <button className={styles.view4}>UPCOMING APPOINTMENTS</button>
+        <div className={styles.centerd}>
+          <button className={styles.button} onClick={handleClick}>
+            LOGOUT
+          </button>
+        </div>
       </div>
     </div>
   );

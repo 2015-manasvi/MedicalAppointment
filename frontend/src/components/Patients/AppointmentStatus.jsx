@@ -8,9 +8,9 @@ const AppointmentStatus = (props) => {
   const location = useLocation();
   //console.log("location value:", location);
   const { date, doctorName, slot } = location.state;
-  console.log("datevalue here:", date);
-  console.log("doctorName here:", doctorName);
-  console.log("slot value:", slot);
+  //   console.log("datevalue here:", date);
+  //   console.log("doctorName here:", doctorName);
+  //   console.log("slot value:", slot);
   const handleButtonClick = () => {
     navigate("/patient-dashboard");
   };
@@ -21,7 +21,7 @@ const AppointmentStatus = (props) => {
         <h2>Appointment Confirmation</h2>
       </div>
       <div>
-        <div className="row m-4" style={{ maxWidth: "100%" }}>
+        <div className="row m-3" style={{ maxWidth: "100%" }}>
           <div className="col-3 col-md-3 p-4  "></div>
           <div
             className="col-9 col-md-9 p-4"
@@ -48,9 +48,18 @@ const AppointmentStatus = (props) => {
               </tbody>
             </table>
             <div className={styles.centered}>
-              <button className={styles.button} onClick={handleButtonClick}>
-                Logout
-              </button>
+              <Link
+                to={{
+                  pathname: "/appointment",
+                }}
+                state={{
+                  date: location.state.date,
+                  doctorName: location.state.doctorName,
+                  slot: location.state.slot,
+                }}
+              >
+                <button className={styles.button}> UPCOMING APPOINTMENT</button>
+              </Link>
             </div>
           </div>
         </div>

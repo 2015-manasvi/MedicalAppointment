@@ -28,7 +28,7 @@ const SearchForm = ({ handleSearch }) => {
         <button className={styles.button} type="submit">
           Search
         </button>
-        <Link to="/">
+        <Link to="/patient-dashboard">
           <button className={styles.button} type="submit">
             GOBack
           </button>

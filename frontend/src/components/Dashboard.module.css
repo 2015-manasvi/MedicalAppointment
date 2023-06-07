@@ -58,3 +58,21 @@
   border-radius: 20px;
   background-color: antiquewhite;
 }
+.button {
+  width: 200px;
+  background-color: beige;
+  border-radius: 20px;
+  border: 2px solid black;
+}
+.centered {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  position: relative;
+  left: 300px;
+}
