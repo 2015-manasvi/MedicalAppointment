@@ -2,7 +2,10 @@ import React, { useContext, useState } from "react";
 import { fetchData } from "../helpers/common";
 import hospital from "../images/hospital.jpg";
 import UserContext from "../context/user";
+import styles from "./Patients/Modal.module.css";
 import jwt_decode from "jwt-decode";
+
+import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -14,6 +17,7 @@ import {
   Box,
 } from "@mui/material";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { fontSize } from "@mui/system";
 
 const LoginPage = (props) => {
   const userCtx = useContext(UserContext);
@@ -65,8 +69,11 @@ const LoginPage = (props) => {
     <div
       style={{ backgroundColor: "#FFFFFF", margin: "0 auto", height: "100vh" }}
     >
+      <div className={styles.title}>
+        <h1 style={{ fontSize: "40px" }}>Healthcare Appointment App</h1>
+      </div>
       <div style={{ margin: "38px 0px" }} onClick={() => setRole("")}>
-        <img src={hospital} style={{ width: "1200px", height: "400px" }} />
+        <img src={hospital} style={{ width: "1200px", height: "350px" }} />
       </div>
 
       <div
@@ -96,7 +103,7 @@ const LoginPage = (props) => {
                 size="large"
                 onClick={() => setRole("doctor")}
               >
-                Doctor Login
+                Admin Login
               </Button>
             </Box>
           </Stack>
@@ -165,6 +172,7 @@ const LoginPage = (props) => {
           </Stack>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -19,10 +19,7 @@ const Selectdate = (props) => {
     <div className="white" style={{ height: "100vh" }}>
       <div>
         <div className="row m-5" style={{ maxWidth: "100%" }}>
-          <div
-            className="col-3 col-md-3 p-4 bg-white "
-            style={{ height: "80vh" }}
-          ></div>
+          <div className="col-3 col-md-3 p-4 " style={{ height: "80vh" }}></div>
           <div
             className="col-9 col-md-9 p-4"
             style={{

@@ -46,7 +46,7 @@ const DoctorSchedule = (props) => {
     <div style={{ height: "100vh" }}>
       <div>
         <div className="row m-5" style={{ maxWidth: "100%" }}>
-          <div className="col-3 col-md-3 p-4 bg-white "></div>
+          <div className="col-3 col-md-3 p-4"></div>
           <div
             className="col-9 col-md-9 p-4"
             style={{

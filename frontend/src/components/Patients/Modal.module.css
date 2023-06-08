@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap");
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -107,4 +109,22 @@ td {
 .center {
   display: inline;
   padding: 10px 20px;
+}
+.contact {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: -50px;
+}
+.title {
+  text-align: center;
+  color: blue;
+
+  font-family: "Rubik Moonrocks", cursive;
 }

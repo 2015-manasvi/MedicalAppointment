@@ -17,6 +17,9 @@ const PatientDashboard = () => {
   const handleClick = () => {
     navigate("/");
   };
+  const showAppointments = () => {
+    navigate("/previous");
+  };
   return (
     <div className={styles.display}>
       <div className={styles.patient}>PATIENT DASHBOARD</div>
@@ -24,6 +27,11 @@ const PatientDashboard = () => {
         <div>
           <button className={styles.view1} onClick={ShowPersonalDetail}>
             PERSONAL DETAILS
+          </button>
+        </div>
+        <div>
+          <button className={styles.view1} onClick={showAppointments}>
+            UPCOMING APPOINTMENTS
           </button>
         </div>
         <button className={styles.view2} onClick={searchClick}>

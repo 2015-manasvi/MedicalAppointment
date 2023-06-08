@@ -12,6 +12,7 @@ import UserContext from "./context/user";
 import AppointmentStatus from "./components/Patients/AppointmentStatus";
 import UpcomingAppointments from "./components/Patients/UpcomingAppointments";
 import DoctorSchedule from "./components/Doctors/DoctorSchedule";
+import BookedAppointments from "./components/Patients/BookedAppointments";
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState();
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/" element={<LoginPage />} />
         <Route path="/patient-dashboard" element={<PatientDashboard />} />
         <Route path="/patient" element={<PatientDetails />} />
+        <Route path="/previous" element={<BookedAppointments />} />
         <Route path="/search" element={<SearchDoctor />} />
         <Route path="/selectdate" element={<Selectdate />} />
         <Route path="/book-slot" element={<BookingSlot />} />

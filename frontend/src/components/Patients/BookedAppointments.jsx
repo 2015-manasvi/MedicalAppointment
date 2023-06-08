@@ -5,24 +5,18 @@ import { useLocation } from "react-router-dom";
 import styles from "./Modal.module.css";
 import UserContext from "../../context/user";
 
-const UpcomingAppointments = () => {
+const BookedAppointments = () => {
   const userCtx = useContext(UserContext);
-  const location = useLocation();
+
   const navigate = useNavigate();
-  console.log("location value:", location);
-  const { date, doctorName, slot } = location.state;
-  //const doctorName = location.state;
-  //console.log("doctor Name:", doctorName);
-  //console.log("Date value: ", date);
+
   const [appointment, setAppointment] = useState([]);
-  const [selectedAppointments, setSelectedAppointments] = useState([]);
 
   const getAppointment = async () => {
     const { ok, data } = await fetchData("/api/appointment");
     if (ok) {
       console.log(data);
       setAppointment(data);
-      setSelectedAppointments(data);
     } else {
       console.log(data);
     }
@@ -31,12 +25,6 @@ const UpcomingAppointments = () => {
     navigate("/patient-dashboard");
   };
 
-  const handleDelete = (id) => {
-    const updatedAppointments = selectedAppointments.filter(
-      (appointment) => appointment._id !== id
-    );
-    setSelectedAppointments(updatedAppointments);
-  };
   const cancelAppointment = async (id) => {
     const { ok, data } = await fetchData(
       "/api/appointment/" + id,
@@ -52,7 +40,6 @@ const UpcomingAppointments = () => {
   };
 
   useEffect(() => {
-    // addNewAppointment();
     getAppointment();
   }, []);
 
@@ -63,12 +50,12 @@ const UpcomingAppointments = () => {
       </div>
       <div>
         <div className="row m-5" style={{ maxWidth: "100%" }}>
-          <div className="col-3 col-md-3 p-4"></div>
+          <div className="col-3 col-md-3 p-4 "></div>
           <div
             className="col-9 col-md-9 p-4"
             style={{
               border: "15px solid yellow ",
-              height: "60vh",
+              height: "80vh",
               backgroundColor: "#6c757d",
             }}
           >
@@ -81,7 +68,7 @@ const UpcomingAppointments = () => {
                 </tr>
               </thead>
               <tbody>
-                {appointment.slice(0, 3).map((item) => (
+                {appointment.map((item) => (
                   <tr key={item._id}>
                     <td>{item.date}</td>
                     <td>{item.slotTime}</td>
@@ -91,40 +78,11 @@ const UpcomingAppointments = () => {
                         className={styles.button}
                         onClick={() => cancelAppointment(item._id)}
                       >
-                        Cancel
+                        Cancel Appointment
                       </button>
                     </td>
                   </tr>
                 ))}
-                {selectedAppointments.slice(0, 1).map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.date}</td>
-                    <td>{item.slotTime}</td>
-                    <td>{item.doctorName}</td>
-                    <td>
-                      <button
-                        className={styles.button}
-                        onClick={() => handleDelete(item._id)}
-                      >
-                        Cancel
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-
-                <tr>
-                  <td>{date.toLocaleDateString()}</td>
-                  <td>{slot}</td>
-                  <td>{doctorName}</td>
-                  <td>
-                    <button
-                      className={styles.button}
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      Cancel
-                    </button>
-                  </td>
-                </tr>
               </tbody>
             </table>
             <div className={styles.centered}>
@@ -139,4 +97,4 @@ const UpcomingAppointments = () => {
   );
 };
 
-export default UpcomingAppointments;
+export default BookedAppointments;
