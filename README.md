@@ -64,6 +64,6 @@ Access the app at http://localhost:5173
 
 After a Patient has logged in,will be directed to the patient dashboard showing options components.
 
-![Patient Dashboard](frontend\public\readme\PatientDashboard.png "Patient")
+![Patient Dashboard](frontend\public\readme\PatientDashboard.png)
 
 -
