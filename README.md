@@ -44,9 +44,9 @@ Access the app at http://localhost:5173
   ![Main Login page](frontend\public\readme\LoginPage.png "Login page")
 
 - In Patient login page, the Patient use their username and password to login.
-  ![Patient Login page](public/readme/PatientLogin.png "Patient Login page")
+  ![Patient Login page](frontend\public\readme\PatientLogin.png "Patient Login page")
 - In Admin login page, the login is done using the username and password.
-  ![Admin Login page](public/readme/AdminLogin.png "Admin Login page")
+  ![Admin Login page](frontend\public\readme\AdminLogin.png "Admin Login page")
 
 - Upon successful login,navigate to next page, based on the role (Patient or Admin).
   ​<br/>
@@ -64,6 +64,6 @@ Access the app at http://localhost:5173
 
 After a Patient has logged in,will be directed to the patient dashboard showing options components.
 
-![Patient Dashboard](public/readme/PatientDashboard.png "Patient")
+![Patient Dashboard](frontend\public\readme\PatientDashboard.png "Patient")
 
 -
