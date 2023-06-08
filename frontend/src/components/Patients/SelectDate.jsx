@@ -13,8 +13,8 @@ const Selectdate = (props) => {
   const onChange = (date) => {
     setDate(date);
   };
-  const pervious = new Date();
-  pervious.setDate(pervious.getDate() - 1);
+  const previous = new Date();
+  previous.setDate(previous.getDate() - 1);
   return (
     <div className="white" style={{ height: "100vh" }}>
       <div>
@@ -32,7 +32,7 @@ const Selectdate = (props) => {
               <div>
                 <Calendar
                   tileDisabled={({ date }) =>
-                    date.getDay() === 0 || date < pervious
+                    date.getDay() === 0 || date < previous
                   }
                   onChange={onChange}
                   value={date}
