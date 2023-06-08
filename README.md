@@ -66,4 +66,19 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 
 ![Patient Dashboard](frontend\public\readme\PatientDashboard.png)
 
--
+- Clicking on one of these option button personal details, will display the details of the patient name,email and phone number.Here, patient can edit email and phone number to click update button.
+  ![Personal Detail](frontend\public\readme\PatientPersonalDetails.png)
+
+  ![Update Patient Detail](frontend\public\readme\UpdatePatient.png)
+
+- Clicking on a back button,come back to the patient dashboard and click one of these options Upcoming Appointment to view already booked apppointments.Here, ptient can cancel appointments to click cancel button.
+  ![Patient Upcoming Appointments](frontend\public\readme\UpcomingAppointments.png)
+
+- Clicking on a goback button,come back to the patient dashboard and click one of these options SearchDoctor button,page navigate to doctor search page here displays the full doctor details (name, doctorId, email, phone number & specialization).Here,filterd doctor details with doctor name.
+  ![Show Doctor Details](\frontend\public\readme\SearchDoctor.png)
+
+-Choose doctor and click book button,doctorname and doctorId data pass to the next component by using useLocation.Values are passed through Link, now page navigate to next component date selection ,here display the react calendar for selection of appointment date, click date which date patient prefer.
+![Show Calendar](\frontend\public\readme\DateSelection.png)
+
+- Once a date is selected, pass values(doctor name,doctorId & date) to the next component slots selection,in this component display the available slots for patient to choose.
+  ![Show Slots](\frontend\public\readme\SlotsSelection.png)
