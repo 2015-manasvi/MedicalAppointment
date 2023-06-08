@@ -9,7 +9,7 @@ const Selectdate = (props) => {
 
   const location = useLocation();
 
-  const doctorName = location.state;
+  const { doctorName, doctorId } = location.state;
   const onChange = (date) => {
     setDate(date);
   };
@@ -62,6 +62,7 @@ const Selectdate = (props) => {
                   state={{
                     date: date,
                     doctorName: location.state.doctorName,
+                    doctorId: location.state.doctorId,
                   }}
                 >
                   <button className={styles.button2}>Confirm</button>

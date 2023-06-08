@@ -5,16 +5,17 @@ import { useLocation } from "react-router-dom";
 const BookingSlot = (props) => {
   const location = useLocation();
   //console.log("location value:", location);
-  const { date, doctorName } = location.state;
+  const { date, doctorName, doctorId } = location.state;
   //const doctorName = location.state;
   console.log("doctor Name:", doctorName);
   console.log("Date value: ", date);
+  console.log("doctorId", doctorId);
   //const [dateId, setdateId] = useState();
   const [slots, setSlots] = useState([]);
 
   const getSlots = async () => {
     const { ok, data } = await fetchData("/api/getslots", undefined, "POST", {
-      id: "doctor003",
+      id: doctorId,
     });
     if (ok) {
       console.log(data.slots);
@@ -24,15 +25,15 @@ const BookingSlot = (props) => {
     }
   };
 
-  // const handleSlotSelection = (selectedSlot) => {
-  //   const updatedSlots = slots.map((slot) => {
-  //     if (slot.time === selectedSlot) {
-  //       return { ...slot, isBooked: true };
-  //     }
-  //     return slot;
-  //   });
-  //   setSlots(updatedSlots);
-  // };
+  const handleSlotSelection = (selectedSlot) => {
+    const updatedSlots = slots.map((slot) => {
+      if (slot.time === selectedSlot) {
+        return { ...slot, isBooked: true };
+      }
+      return slot;
+    });
+    setSlots(updatedSlots);
+  };
 
   // onClick={() => handleSlotSelection(slot.time)}
   // disabled={slot.isBooked} // Add disabled attribute
@@ -79,7 +80,12 @@ const BookingSlot = (props) => {
                             slot: slot.time,
                           }}
                         >
-                          Book Now
+                          <button
+                            onClick={() => handleSlotSelection(slot.time)}
+                            disabled={slot.isBooked} // Add disabled attribute
+                          >
+                            Book Now
+                          </button>
                         </Link>
                       </td>
                     )}

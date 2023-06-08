@@ -23,7 +23,12 @@ const SearchResults = ({ results }) => {
             </div>
 
             <div>
-              <b>Email:</b>s{item.email}
+              <b>Email:</b>
+              {item.email}
+            </div>
+            <div>
+              <b>DoctorId:</b>
+              {item.id}
             </div>
             <div>
               <b>Specialization : </b>
@@ -42,7 +47,7 @@ const SearchResults = ({ results }) => {
                   to={{
                     pathname: "/selectdate",
                   }}
-                  state={{ doctorName: item.name }}
+                  state={{ doctorName: item.name, doctorId: item.id }}
                 >
                   <button className="btn btn-sm btn-primary"> Book</button>
                 </Link>
