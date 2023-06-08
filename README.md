@@ -41,7 +41,7 @@ Access the app at http://localhost:5173
 ### Login
 
 - Display the **login page** with two buttons one for **Patient** Login another for **Admin** Login
-  ![Main Login page](frontend/public/readme/LoginPage.png "Login page")
+  ![Main Login page](frontend\public\readme\LoginPage.png "Login page")
 
 - In Patient login page, the Patient use their username and password to login.
   ![Patient Login page](public/readme/PatientLogin.png "Patient Login page")
