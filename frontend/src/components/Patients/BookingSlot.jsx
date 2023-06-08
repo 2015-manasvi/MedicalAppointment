@@ -35,9 +35,6 @@ const BookingSlot = (props) => {
     setSlots(updatedSlots);
   };
 
-  // onClick={() => handleSlotSelection(slot.time)}
-  // disabled={slot.isBooked} // Add disabled attribute
-
   useEffect(() => {
     getSlots();
   }, []);
@@ -80,12 +77,7 @@ const BookingSlot = (props) => {
                             slot: slot.time,
                           }}
                         >
-                          <button
-                            onClick={() => handleSlotSelection(slot.time)}
-                            disabled={slot.isBooked} // Add disabled attribute
-                          >
-                            Book Now
-                          </button>
+                          Book Now
                         </Link>
                       </td>
                     )}
