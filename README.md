@@ -104,7 +104,6 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 #### BACKEND
 
 Dependencies
-
 bcrypt
 
 cors
@@ -136,30 +135,32 @@ Data Privacy: Protecting endpoints helps safeguard sensitive user data stored in
 
 Below are the CRUD methods for the patients
 
-router.get("/patients", userAuth, getPatients);
-router.post("/patients", postPatient);
-router.put("/patients", userAuth, validateInsertPatientData, putPatients);
-router.delete("/patients/:id", userAuth, deletePatients);
-router.patch("/patients/:id",userAuth,validateInsertPatientData,patchPatients);
+- router.get("/patients", userAuth, getPatients);
+- router.post("/patients", postPatient);
+- router.put("/patients", userAuth, validateInsertPatientData, putPatients);
+- router.delete("/patients/:id", userAuth, deletePatients);
+- router.patch("/patients/:id",userAuth,validateInsertPatientData,patchPatients);
 
 ## Doctors
 
 Below are the CRUD methods for the doctors
-router.get("/doctors", userAuth, getDoctors);
-router.post("/doctors", adminAuth, postDoctor);
-router.put("/doctors", adminAuth, validateInsertDoctorData, putDoctors);
-router.delete("/doctors/:id", adminAuth, deleteDoctors);
-router.patch("/doctors/:id", adminAuth, patchDoctors);
-router.post("/getslots", getSlots);
+
+- router.get("/doctors", userAuth, getDoctors);
+- router.post("/doctors", adminAuth, postDoctor);
+- router.put("/doctors", adminAuth, validateInsertDoctorData, putDoctors);
+- router.delete("/doctors/:id", adminAuth, deleteDoctors);
+- router.patch("/doctors/:id", adminAuth, patchDoctors);
+- router.post("/getslots", getSlots);
 
 ## Appointments
 
 Below are the CRUD methods for the appointments.
-router.get("/appointment", getAppointments);
-router.post("/appointment", postAppointment);
-router.put("/appointment", putAppointments);
-router.delete("/appointment/:id", deleteAppointments);
-router.patch("/appointment/:id", patchAppointment);
+
+- router.get("/appointment", getAppointments);
+- router.post("/appointment", postAppointment);
+- router.put("/appointment", putAppointments);
+- router.delete("/appointment/:id", deleteAppointments);
+- router.patch("/appointment/:id", patchAppointment);
 
 #### Problem-Solving Strategy
 
