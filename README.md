@@ -7,14 +7,13 @@ Medical Appointment App is a react application that allows users to book appoint
 
 User Login: User can log in to access the booking functionality.Upon successful login, the user is directed to patient dashboard.In dashboard,the page navigate depends on patient choice.
 
-        Search and Filter: Users can search for doctors based on name and specialization.
-        Appointment Booking: Users can select a doctor, choose a suitable date,time slot and book their appointments.
-        Appointment Management: Users can view, or cancel their booked appointments.
+    Search and Filter: Users can search for doctors based on name and specialization.
+    Appointment Booking: Users can select a doctor, choose a suitable date,time slot and book their appointments.        Appointment Management: Users can view, or cancel their booked appointments.
 
 Admin Login: After successfull login of admin, the admin is directed to admin dashboard, the page navigate depends on admin choice.
 
-          Doctor Details: Admin can view, update and delete the doctors details.
-          Appointment Details: Admin can view, update and delete the appointment details.
+    Doctor Details: Admin can view, update and delete the doctors details.
+    Appointment Details: Admin can view, update and delete the appointment details.
 
 ## **Technologies used**
 
@@ -46,8 +45,6 @@ Access the app at http://localhost:5173
 
   ![Main Login page]
 
-  > > > > > > > Stashed changes
-
 - In Patient login page, the Patient use their username and password to login.
   ![PatientLogin](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/78ce7c70-8a09-4163-a5f6-5fa7588213d3)
 
@@ -77,8 +74,6 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 
   ![UpdatePatient](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/33327c4e-7203-4148-915d-2b4d1be3225c)
 
-<<<<<<< Updated upstream
-
 - Clicking on a back button,come back to the patient dashboard and click one of these options Upcoming Appointment to view already booked apppointments.Here, ptient can cancel appointments to click cancel button.
   ![AppointmentDetails](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/c1c20687-532c-44d6-a9b0-f0b9e215f472)
 
@@ -90,8 +85,6 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 
 - Once a date is selected, pass values(doctor name,doctorId & date) to the next component slots selection,in this component display the available slots for patient to choose.
   ![SlotsSelection](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/d7cc1bca-aee7-480b-ae7e-2a354545caf0)
-
-=======
 
 - Clicking on a back button,come back to the patient dashboard and click one of these options Upcoming Appointment to view already booked apppointments.Here,fetch booked appointments details from backend ,patient can cancel appointments to click cancel button.
   ![Patient Upcoming Appointments](frontend\public\readme\UpcomingAppointments.png)
