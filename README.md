@@ -41,12 +41,13 @@ Access the app at http://localhost:5173
 ### Login
 
 - Display the **login page** with two buttons one for **Patient** Login another for **Admin** Login
-  ![Main Login page](frontend\public\readme\LoginPage.png "Login page")
+- ![LoginPage](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/c088aeef-e625-4ecc-b1d7-68b3cf9c0537)
 
 - In Patient login page, the Patient use their username and password to login.
-  ![Patient Login page](frontend\public\readme\PatientLogin.png "Patient Login page")
+  ![PatientLogin](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/78ce7c70-8a09-4163-a5f6-5fa7588213d3)
+
 - In Admin login page, the login is done using the username and password.
-  ![Admin Login page](frontend\public\readme\AdminLogin.png "Admin Login page")
+  ![AdminLogin](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/96ab29ca-4aed-469a-906e-dac781fa344b)
 
 - Upon successful login,navigate to next page, based on the role (Patient or Admin).
   ​<br/>
@@ -64,21 +65,25 @@ Access the app at http://localhost:5173
 
 After a Patient has logged in,will be directed to the patient dashboard showing options components.
 
-![Patient Dashboard](frontend\public\readme\PatientDashboard.png)
+![PatientDashboard](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/481476dd-6f8b-4890-9b03-8a3eb357fdb3)
 
 - Clicking on one of these option button personal details, will display the details of the patient name,email and phone number.Here, patient can edit email and phone number to click update button.
-  ![Personal Detail](frontend\public\readme\PatientPersonalDetails.png)
+  ![PatientPersonalDetails](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/9ae619f8-932a-4bb7-b563-bf8ca9dd02ee)
 
-  ![Update Patient Detail](frontend\public\readme\UpdatePatient.png)
+  ![UpdatePatient](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/33327c4e-7203-4148-915d-2b4d1be3225c)
+
 
 - Clicking on a back button,come back to the patient dashboard and click one of these options Upcoming Appointment to view already booked apppointments.Here, ptient can cancel appointments to click cancel button.
-  ![Patient Upcoming Appointments](frontend\public\readme\UpcomingAppointments.png)
+  ![AppointmentDetails](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/c1c20687-532c-44d6-a9b0-f0b9e215f472)
+
 
 - Clicking on a goback button,come back to the patient dashboard and click one of these options SearchDoctor button,page navigate to doctor search page here displays the full doctor details (name, doctorId, email, phone number & specialization).Here,filterd doctor details with doctor name.
-  ![Show Doctor Details](\frontend\public\readme\SearchDoctor.png)
+  ![SearchDoctor](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/84138e40-e7c7-44da-852f-747ead9a0ebe)
+
 
 -Choose doctor and click book button,doctorname and doctorId data pass to the next component by using useLocation.Values are passed through Link, now page navigate to next component date selection ,here display the react calendar for selection of appointment date, click date which date patient prefer.
-![Show Calendar](\frontend\public\readme\DateSelection.png)
+![DateSelection](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/3e384c2a-c5c9-4664-a14c-4a1409ff2ef7)
 
 - Once a date is selected, pass values(doctor name,doctorId & date) to the next component slots selection,in this component display the available slots for patient to choose.
-  ![Show Slots](\frontend\public\readme\SlotsSelection.png)
+  ![SlotsSelection](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/d7cc1bca-aee7-480b-ae7e-2a354545caf0)
+
