@@ -8,7 +8,8 @@ Medical Appointment App is a react application that allows users to book appoint
 User Login: User can log in to access the booking functionality.Upon successful login, the user is directed to patient dashboard.In dashboard,the page navigate depends on patient choice.
 
     Search and Filter: Users can search for doctors based on name and specialization.
-    Appointment Booking: Users can select a doctor, choose a suitable date,time slot and book their appointments.        Appointment Management: Users can view, or cancel their booked appointments.
+    Appointment Booking: Users can select a doctor, choose a suitable date,time slot and book their appointments.
+    Appointment Management: Users can view, or cancel their booked appointments.
 
 Admin Login: After successfull login of admin, the admin is directed to admin dashboard, the page navigate depends on admin choice.
 
@@ -37,10 +38,12 @@ Access the app at http://localhost:5173
 
 ## General flow & user stories
 
+#### FRONTEND
+
 ### Login
 
 - Display the **login page** with two buttons one for **Patient** Login another for **Admin** Login
-  <<<<<<< Updated upstream
+
 - # ![LoginPage](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/c088aeef-e625-4ecc-b1d7-68b3cf9c0537)
 
   ![Main Login page]
@@ -85,28 +88,78 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 
 - Once a date is selected, pass values(doctor name,doctorId & date) to the next component slots selection,in this component display the available slots for patient to choose.
   ![SlotsSelection](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/d7cc1bca-aee7-480b-ae7e-2a354545caf0)
-
-- Clicking on a back button,come back to the patient dashboard and click one of these options Upcoming Appointment to view already booked apppointments.Here,fetch booked appointments details from backend ,patient can cancel appointments to click cancel button.
-  ![Patient Upcoming Appointments](frontend\public\readme\UpcomingAppointments.png)
-
-- Clicking on a goback button,come back to the patient dashboard and click one of these options SearchDoctor button,page navigate to doctor search page here displays the full doctor details (name, doctorId, email, phone number & specialization).Here,filterd doctor details with doctor name.
-  ![Show Doctor Details](frontend\public\readme\SearchDoctor.png)
-
-- Choose doctor and click book button,doctorname and doctorId data pass to the next component by using useLocation.Values are passed through Link, now page navigate to next component of date selection ,here display the react calendar for selection of appointment date, click date which date patient prefer.
-  ![Show Calendar](frontend\public\readme\DateSelection.png)
-
-- Once a date is selected, pass values(doctor name,doctorId & date) to the next component of slots selection,in this component display the available slots, fetch slots from backend for patient to choose which one she prefer.
-  ![Show Slots](frontend\public\readme\SlotsSelection.png)
-
 - Once a slot is selected pass the values of (doctorname,doctorId ,date & slot) ,to click confirm button the page navigate to the next component of appointment confirmation.Here,receive values of doctorname,date,and slots,to displays for appointment confirmation.
-  ![Show Appointment Confirmation](frontend\public\readme\AppointmentConfirmation.png)
 
 - After appointment confirmation,to click the upcoming appointments button to view already booked appointment and currently booked appointment details. Patient is allowed to cancel appointment here to click the cancel button.After that, click goback dashboard button to patient dashboard and patient can logout to click Logout button,page will navigate to main login page.
-  ![Upcoming Appointment Details](frontend\public\readme\UpcomingAppointments.png)
 
 ### Admin
 
 - Once a admin has logged in, he is brough to a **Admin Dashboard** which displays the doctor's details button and apppointment details button.
-  ![Admin Dashboard ](frontend\public\readme\AdminDashboard.png)
 
 - To display doctor details when admin selects the "Doctor Details" button.Admin to view all the doctor details such as doctors name,
+  email,phonenumber and specialization.Admin can edit and delete doctor details,click back button to admin dashboard.
+
+-To click appointment details button to view all the appointment details such as doctors name,email,phonenumber and patients name.Admin can cancel the appointments to clik the cancel appointment button.
+
+#### BACKEND
+
+Dependencies
+bcrypt
+
+cors
+
+dotenv
+
+express
+
+express-validator
+
+jsonwebtoken
+
+mongoose
+
+uuid
+
+General flow
+controllers & routers
+Login uses jwt tokens & UUID encryption of the password in the database. No password is stored in the database, only a hash
+
+End points are secured :
+Authentication: By protecting endpoints, can enforce authentication requirements for accessing sensitive data or performing privileged actions.
+
+Authorization: Along with authentication, protecting endpoints allows to implement authorization rules to control the level of access users have to different resources and actions within your application. Protecting endpoints can help prevent unauthorized modifications or deletions of data in your MongoDB database.
+
+Data Privacy: Protecting endpoints helps safeguard sensitive user data stored in MongoDB database. By controlling access to the data and enforcing encryption.
+
+## Patients
+
+Below are the CRUD methods for the patients
+
+router.get("/patients", userAuth, getPatients);
+router.post("/patients", postPatient);
+router.put("/patients", userAuth, validateInsertPatientData, putPatients);
+router.delete("/patients/:id", userAuth, deletePatients);
+router.patch("/patients/:id",userAuth,validateInsertPatientData,patchPatients);
+
+## Doctors
+
+Below are the CRUD methods for the doctors
+router.get("/doctors", userAuth, getDoctors);
+router.post("/doctors", adminAuth, postDoctor);
+router.put("/doctors", adminAuth, validateInsertDoctorData, putDoctors);
+router.delete("/doctors/:id", adminAuth, deleteDoctors);
+router.patch("/doctors/:id", adminAuth, patchDoctors);
+router.post("/getslots", getSlots);
+
+## Appointments
+
+Below are the CRUD methods for the appointments.
+router.get("/appointment", getAppointments);
+router.post("/appointment", postAppointment);
+router.put("/appointment", putAppointments);
+router.delete("/appointment/:id", deleteAppointments);
+router.patch("/appointment/:id", patchAppointment);
+
+#### Problem-Solving Strategy
+
+Database structure was kept simple: 4 collections [ patients, doctors,appointments]
