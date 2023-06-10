@@ -165,4 +165,14 @@ Below are the CRUD methods for the appointments.
 
 #### Problem-Solving Strategy
 
-Database structure was kept simple: 4 collections [ patients, doctors,appointments]
+Database structure was kept simple: 3 collections [ patients, doctors,appointments]
+
+To access key information in the various components and avoid too much proping, the doctor name,doctorId,date,slot are stored in a useLocation state which can then be accessed by subcomponent.
+
+The navigation to previous pages proved challenging: some components are used by both user and admin (patient and doctor details). The solution to navigating within each user's flow came from extensively using react route domrendering and storing values of the navigation in a useContext state and useLocation(new try).
+
+#### Unsolved problems
+
+❌Doctor Appointment Login: Currently, the app does not have a separate login system for doctors. As a result, any user can book appointments as a doctor. In future updates, plan to implement a dedicated login system for doctors, allowing them to manage their availability, view their schedules, and receive notifications for new appointments.
+
+❌ Disabled Slots after Selection: At present, the available slots for appointments are not disabled once they are selected by a patient. This means that multiple patients can book appointments for the same slot simultaneously. In the future, aim to enhance the app by implementing a mechanism to disable the slots once they are booked, preventing multiple bookings for the same time slot.
