@@ -38,7 +38,7 @@ Access the app at http://localhost:5173
 
 ## General flow & user stories
 
-#### FRONTEND
+#### **FRONTEND**
 
 ### Login
 
@@ -101,7 +101,7 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 
 -To click appointment details button to view all the appointment details such as doctors name,email,phonenumber and patients name.Admin can cancel the appointments to clik the cancel appointment button.
 
-#### BACKEND
+#### **BACKEND**
 
 Dependencies
 
@@ -163,7 +163,7 @@ Below are the CRUD methods for the appointments.
 - router.delete("/appointment/:id", deleteAppointments);
 - router.patch("/appointment/:id", patchAppointment);
 
-#### Problem-Solving Strategy
+#### **Problem-Solving Strategy**
 
 Database structure was kept simple: 3 collections [ patients, doctors,appointments]
 
@@ -171,7 +171,7 @@ To access key information in the various components and avoid too much proping, 
 
 The navigation to previous pages proved challenging: some components are used by both user and admin (patient and doctor details). The solution to navigating within each user's flow came from extensively using react route domrendering and storing values of the navigation in a useContext state and useLocation(new try).
 
-#### Unsolved problems
+#### **Unsolved problems**
 
 ❌Doctor Appointment Login: Currently, the app does not have a separate login system for doctors. As a result, any user can book appointments as a doctor. In future updates, plan to implement a dedicated login system for doctors, allowing them to manage their availability, view their schedules, and receive notifications for new appointments.
 
