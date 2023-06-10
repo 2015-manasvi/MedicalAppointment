@@ -89,17 +89,21 @@ After a Patient has logged in,will be directed to the patient dashboard showing 
 - Once a date is selected, pass values(doctor name,doctorId & date) to the next component slots selection,in this component display the available slots for patient to choose.
   ![SlotsSelection](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/d7cc1bca-aee7-480b-ae7e-2a354545caf0)
 - Once a slot is selected pass the values of (doctorname,doctorId ,date & slot) ,to click confirm button the page navigate to the next component of appointment confirmation.Here,receive values of doctorname,date,and slots,to displays for appointment confirmation.
+![AppointmentConfirmation](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/64f79bb8-989e-499c-b355-551461635bdb)
 
 - After appointment confirmation,to click the upcoming appointments button to view already booked appointment and currently booked appointment details. Patient is allowed to cancel appointment here to click the cancel button.After that, click goback dashboard button to patient dashboard and patient can logout to click Logout button,page will navigate to main login page.
 
 ### Admin
 
 - Once a admin has logged in, he is brough to a **Admin Dashboard** which displays the doctor's details button and apppointment details button.
+![AdminDashboard](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/6859c579-4b59-4d8a-af61-88f690450008)
 
 - To display doctor details when admin selects the "Doctor Details" button.Admin to view all the doctor details such as doctors name,
   email,phonenumber and specialization.Admin can edit and delete doctor details,click back button to admin dashboard.
+![DoctorDetails](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/f6dd529e-a61a-4e47-b07b-3ac82cf5881c)
 
 -To click appointment details button to view all the appointment details such as doctors name,email,phonenumber and patients name.Admin can cancel the appointments to clik the cancel appointment button.
+![AppointmentDetails](https://github.com/2015-manasvi/MedicalAppointment/assets/122246672/b45c39fa-7aee-4a4b-b9d8-5a68db7e0185)
 
 #### **BACKEND**
 
